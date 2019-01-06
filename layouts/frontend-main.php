@@ -25,8 +25,8 @@ foreach ($settings as $setting){
 }
 
  $lang = yii::$app->session->get('lang');
-// if(!$lang)
-// $lang = 'en-US';
+ if(!$lang)
+ $lang = 'en-US';
 
 switch ($settings['language']) {
     case 'EN':
@@ -44,9 +44,10 @@ yii::$app->session->set('lang',$lang);
 $activeLangLabel = $languages[$lang];
 unset($languages[$lang]);
 
+$homes = Module::t('theme','Home');
 
 ?>
-<?php $this->beginPage() ?>
+<?php$this->beginPage() ?>
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
 <head>
@@ -58,7 +59,7 @@ unset($languages[$lang]);
     <?php $this->head() ?>
 </head>
 <body>
-<?php $this->beginBody() ?>
+<?php $this->beginBody()?>
 
 <div class="wrap">
     <?php
@@ -71,6 +72,7 @@ unset($languages[$lang]);
     ]);
     $menuItems = [
         ['label' => Module::t('theme','Home'), 'url' => ['/site/home']],
+		['label' => Module::t('theme','Login'), 'url' => ['/login/auth']]
         
     ];
     if($settings['about'] === 'true')
@@ -123,7 +125,6 @@ unset($languages[$lang]);
 <footer class="footer">
     <div class="container">
         <p class="pull-left">&copy; Kocaeli University Open Source Lab <?= date('Y') ?></p>
-
         <p class="pull-right"><?= Yii::powered() ?></p>
     </div>
 </footer>
