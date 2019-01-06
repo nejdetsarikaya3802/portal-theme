@@ -178,5 +178,10 @@ a.desc:after {
   .slider.round:before {
     border-radius: 50%;
   } 
+  
+  .auth-clients-holder {
+    display: inline-block;
+    vertical-align: top;
+  }
 
   
